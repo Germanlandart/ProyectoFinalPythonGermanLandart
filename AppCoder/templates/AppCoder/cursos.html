@@ -1,0 +1,47 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+                        
+Bienvenidos a mi página
+
+{% endblock %}
+
+{% block titulo2 %}
+
+
+CURSOS
+
+{% endblock %}
+
+{% block descripcion %}
+
+
+
+{% endblock %}    
+
+{% block descripcion2 %}
+
+
+<form action="" method="POST"> {% csrf_token %}
+
+    <table>
+
+
+
+    {{form1.as_table}}
+
+
+
+
+    </table>
+
+    <input type="submit" value="Confirmar">
+
+
+
+</form>
+
+                            
+{% endblock %}    
