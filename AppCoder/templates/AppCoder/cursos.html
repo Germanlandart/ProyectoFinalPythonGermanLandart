@@ -16,7 +16,8 @@ CURSOS
 {% endblock %}
 
 {% block descripcion %}
-
+ Aquí podrá agregar los cursos de su interés y la modalidad que prefiera! Por el momento contamos con cursos de tecnología, de arte, de finanzas, y de marketing.
+ Si desea más información al respecto, brindandonos su e-mail podremos contactarlo con información detallada sobre nuestros servicios.
 
 
 {% endblock %}    
@@ -24,25 +25,22 @@ CURSOS
 {% block form %}
 
 
-<form action="" method="POST"> {% csrf_token %}
-
-    <table>
+<form action="/AppCoder/cursoFormulario/" method="POST"> {% csrf_token %}
 
 
 
-    {{form1.as_table}}
-
-
-
-
-    </table>
-
-    <input type="submit" value="Confirmar">
-
-
-
+        <p>Curso: <input type="text" name="curso" > </p>
+        <p>Modalidad: <input type="text" name="modalidad" > </p>
+        <p>Correo: <input type="text" name="correo"></p>
+        <input type="submit" value="Guardar">
+     
+    
+    
+    
+    
+    
+    
 </form>
-
 
 
                             

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from AppCoder.forms import CursoFormulario
 from AppCoder.models import *
+from .forms import CursoFormulario, ServicioFormulario, CarreraFormulario
 
 
 def inicio(request):
@@ -34,7 +34,7 @@ def cursoFormulario(request):
 
             curso.save()
 
-            return render(request, "AppCoder/inicio.html")
+            return render(request, "AppCoder/cursos.html")
         
     else: 
 
@@ -69,7 +69,48 @@ def resultados(request):
 
 def servicioFormulario(request):
 
-    pass
+    if request.method == "POST":
 
-   
+        formulario2 = ServicioFormulario(request.POST)
+
+        if formulario2.is_valid():
+
+            info = formulario2.cleaned_data
+
+            servicio = Servicio(nombre_servicio=info["nombre_servicio"], forma_de_pago=info["forma_de_pago"], correo=info["correo"]) 
+
+            servicio.save()
+
+            return render(request, "AppCoder/servicios.html")
+        
+    else: 
+
+        formulario2 = CursoFormulario()    
+
+
+    return render(request, "AppCoder/cursoFormulario.html", {"form2":formulario2})
+
+
+def carrerasFormulario(request):
+
+    if request.method == "POST":
+
+        formulario3 = CarreraFormulario(request.POST)
+
+        if formulario3.is_valid():
+
+            info = formulario3.cleaned_data
+
+            carrera = Servicio(nombre_carrera=info["nombre_carrera"], nombre_interesado=info["nombre_interesado"], correo=info["correo"]) 
+
+            carrera.save()
+
+            return render(request, "AppCoder/carreras.html")
+        
+    else: 
+
+        formulario3 = CarreraFormulario()    
+
+
+    return render(request, "AppCoder/carreraFormulario.html", {"form3":formulario3})
 

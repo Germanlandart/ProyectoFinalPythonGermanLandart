@@ -14,3 +14,34 @@ Bienvenidos a mi página
 SERVICIOS
 
 {% endblock %}
+
+{% block descripcion %} 
+ Aquí podrá agregar los servicios que a usted más le interesen, y la forma de pago que prefiera. Por el momento, contamos con el servicio de armado y correción de cv, servicio de instrucción particular, y servicios financieros generales.
+ Si desea más información al respecto, brindandonos su e-mail podremos contactarlo con información detallada sobre nuestros cursos.
+
+
+{% endblock %}    
+
+{% block form %}
+
+
+<form action="/AppCoder/servicioFormulario/" method="POST"> {% csrf_token %}
+
+
+
+        <p>Nombre del servicio: <input type="text" name="nombre_servicio" > </p>
+        <p>Forma de pago: <input type="text" name="forma_de_pago" > </p>
+        <p>Correo: <input type="text" name="correo"></p>
+        <input type="submit" value="Guardar">
+     
+    
+    
+    
+    
+    
+    
+</form>
+
+
+                            
+{% endblock %}    

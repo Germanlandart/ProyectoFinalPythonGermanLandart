@@ -14,3 +14,32 @@ Bienvenidos a mi página
 CARRERAS
 
 {% endblock %}
+
+{% block descripcion %}
+Aquí podrá agregar sugerencias sobre carreras que le gustaría que agreguemos más adelante, junto con su nombre y su correo para poder contactarlo llegado el momento.
+
+{% endblock %}    
+
+{% block form %}
+
+
+<form action="/AppCoder/carreraFormulario/" method="POST"> {% csrf_token %}
+
+
+
+        <p>Nombre de la carrera: <input type="text" name="curso" > </p>
+        <p>Nombre del interesado: <input type="text" name="modalidad" > </p>
+        <p>Correo: <input type="text" name="correo"></p>
+        <input type="submit" value="Guardar">
+     
+    
+    
+    
+    
+    
+    
+</form>
+
+
+                            
+{% endblock %}    
