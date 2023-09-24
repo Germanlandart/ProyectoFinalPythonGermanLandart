@@ -9,6 +9,6 @@ class CursoFormulario(forms.Form):
 
 class ServicioFormulario(forms.Form):
 
-        nombre_servicio = forms.CharField(max_length=60)
-        forma_de_pago = forms.CharField(max_length=60)
-        correo = forms.EmailField()
+    nombre_servicio = forms.CharField(max_length=60)
+    forma_de_pago = forms.CharField(max_length=60)
+    correo = forms.EmailField()

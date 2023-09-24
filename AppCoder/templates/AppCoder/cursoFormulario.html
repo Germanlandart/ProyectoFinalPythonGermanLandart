@@ -1,32 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "AppCoder/padre.html" %}
 
-    <form action="" method="POST"> {% csrf_token %}
+{% load static %}
 
-        <table>
+{% block titulo %}
+                        
+Bienvenidos a mi página
 
+{% endblock %}
+
+{% block titulo2 %}
 
 
-        {{form1.as_table}}
+CURSOS
 
+{% endblock %}
 
-
-
-        </table>
-
-        <input type="submit" value="Confirmar">
+{% block descripcion %}
 
 
 
-    </form>
+{% endblock %}    
+
+{% block form %}
 
 
-    
-</body>
-</html>
+<form action="" method="POST"> {% csrf_token %}
+
+    <table>
+
+
+
+    {{form1.as_table}}
+
+
+
+
+    </table>
+
+    <input type="submit" value="Confirmar">
+
+
+
+</form>
+
+
+
+                            
+{% endblock %}    
