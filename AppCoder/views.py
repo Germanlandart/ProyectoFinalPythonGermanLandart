@@ -71,11 +71,11 @@ def servicioFormulario(request):
 
     if request.method == "POST":
 
-        formulario2 = ServicioFormulario(request.POST)
+        formulario1 = ServicioFormulario(request.POST)
 
-        if formulario2.is_valid():
+        if formulario1.is_valid():
 
-            info = formulario2.cleaned_data
+            info = formulario1.cleaned_data
 
             servicio = Servicio(nombre_servicio=info["nombre_servicio"], forma_de_pago=info["forma_de_pago"], correo=info["correo"]) 
 
@@ -85,23 +85,23 @@ def servicioFormulario(request):
         
     else: 
 
-        formulario2 = CursoFormulario()    
+        formulario1 = ServicioFormulario()    
 
 
-    return render(request, "AppCoder/cursoFormulario.html", {"form2":formulario2})
+    return render(request, "AppCoder/servicioFormulario.html", {"form1":formulario1})
 
 
-def carrerasFormulario(request):
+def carreraFormulario(request):
 
     if request.method == "POST":
 
-        formulario3 = CarreraFormulario(request.POST)
+        formulario1 = CarreraFormulario(request.POST)
 
-        if formulario3.is_valid():
+        if formulario1.is_valid():
 
-            info = formulario3.cleaned_data
+            info = formulario1.cleaned_data
 
-            carrera = Servicio(nombre_carrera=info["nombre_carrera"], nombre_interesado=info["nombre_interesado"], correo=info["correo"]) 
+            carrera = Carreras(nombre_carrera=info["nombre_carrera"], nombre_interesado=info["nombre_interesado"], correo=info["correo"]) 
 
             carrera.save()
 
@@ -109,8 +109,8 @@ def carrerasFormulario(request):
         
     else: 
 
-        formulario3 = CarreraFormulario()    
+        formulario1 = CarreraFormulario()    
 
 
-    return render(request, "AppCoder/carreraFormulario.html", {"form3":formulario3})
+    return render(request, "AppCoder/carreraFormulario.html", {"form1":formulario1})
 

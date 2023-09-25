@@ -1,0 +1,47 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+                        
+Bienvenidos a mi página
+
+{% endblock %}
+
+{% block titulo2 %}
+
+
+CURSOS
+
+{% endblock %}
+
+{% block descripcion %}
+ Aquí podrá agregar los cursos de su interés y la modalidad que prefiera! Por el momento contamos con cursos de tecnología, de arte, de finanzas, y de marketing.
+ Si desea más información al respecto, brindandonos su e-mail podremos contactarlo con información detallada sobre nuestros servicios.
+
+
+{% endblock %}    
+
+{% block form %}
+
+
+<form action="/AppCoder/cursoFormulario/" method="POST"> {% csrf_token %}
+
+
+
+        <p>Curso: <input type="text" name="curso" > </p>
+        <p>Modalidad: <input type="text" name="modalidad" > </p>
+        <p>Correo: <input type="text" name="correo"></p>
+        <input type="submit" value="Guardar">
+     
+    
+    
+    
+    
+    
+    
+</form>
+
+
+                            
+{% endblock %}    
