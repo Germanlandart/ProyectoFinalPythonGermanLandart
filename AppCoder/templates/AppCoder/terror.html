@@ -1,0 +1,43 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+                        
+Bienvenidos a mi página
+
+{% endblock %}
+
+{% block titulo2 %}
+
+
+TERROR
+
+{% endblock %}
+
+{% block descripcion %}
+Libros de terror
+
+
+{% endblock %}    
+
+{% block form %}
+
+
+<form action="/AppCoder/terrorFormulario/" method="POST"> {% csrf_token %}
+
+        <table> {{ form1.as_table }} 
+     
+        <input type="submit" value="Guardar">
+     
+    
+        </table>        
+    
+    
+    
+    
+</form>
+
+
+                            
+{% endblock %}    

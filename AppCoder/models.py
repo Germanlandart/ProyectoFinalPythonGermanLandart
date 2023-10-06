@@ -1,21 +1,33 @@
 from django.db import models
 
-class Cursos(models.Model):
+class Terror(models.Model):
     
-    curso = models.CharField(max_length=60)
-    modalidad = models.CharField(max_length=60)
-    correo = models.EmailField()
+    def __str__(self):
+        
+        return f"Libro: {self.libro} ------ Autor: {self.autor} ------ Year: {self.year}"
+    
+    libro = models.CharField(max_length=60)
+    autor = models.CharField(max_length=60)
+    year = models.IntegerField()
 
-class Servicio(models.Model):
+class CienciaFiccion(models.Model):
 
-    nombre_servicio = models.CharField(max_length=60)
-    forma_de_pago = models.CharField(max_length=60)
-    correo = models.EmailField()
+    def __str__(self):
+
+        return f"Libro: {self.libro} ------ Autor: {self.autor} ------ Year: {self.year}"
+
+    libro = models.CharField(max_length=60)
+    autor = models.CharField(max_length=60)
+    year = models.IntegerField()
 
        
-class Carreras(models.Model):
+class Fantasia(models.Model):
 
-    nombre_carrera = models.CharField(max_length=60)
-    nombre_interesado = models.CharField(max_length=60)
-    correo = models.EmailField()
+    def __str__(self):
+
+        return f"Libro: {self.libro} ------ Autor: {self.autor} ------ Year: {self.year}"
+
+    libro = models.CharField(max_length=60)
+    autor = models.CharField(max_length=60)
+    year = models.IntegerField()
         

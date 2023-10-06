@@ -1,0 +1,40 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+                        
+Bienvenidos a mi página
+
+{% endblock %}
+
+{% block titulo2 %}
+
+
+Empecemos!
+
+{% endblock %}
+
+
+{% block descripcion %}
+
+
+
+{% for ciencia in cienciaf %}
+
+<p>CienciaFiccion: {{serv.libro}}</p>
+<p>Autor: {{serv.autor}}</p>
+<p>Year: {{serv.year}}</p>
+
+
+################################################
+
+
+{% endfor  %}
+
+
+                           
+
+                            
+{% endblock %}    
+

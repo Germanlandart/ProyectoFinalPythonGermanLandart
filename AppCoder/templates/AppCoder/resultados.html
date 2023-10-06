@@ -7,11 +7,11 @@
 </head>
 <body>
 
-    <p>Estamos buscando el curso: {{curso}}</p>
+    <p>Estamos buscando el terror: {{terror.libro}}</p>
 
-    {% for curso in cursos %}
+    {% for libro in terror %}
 
-        <p>Nombre: {{curso.curso}} ----- Modalidad: {{curso.modalidad}}</p>
+        <p>Nombre: {{terror.libro}} ----- Autor: {{terror.autor}}</p>
     
     {% endfor %}
 

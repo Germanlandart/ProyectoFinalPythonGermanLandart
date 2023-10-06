@@ -21,7 +21,7 @@ Empecemos!
 <form action="/AppCoder/resultados/" method="GET">
 
 
-    <input type="text" name="curso" id="curso">
+    <input type="text" name="terror" id="terror">
 
     <input type="submit" value="Buscar">
 
@@ -31,11 +31,11 @@ Empecemos!
 </form>
 
 
-<p>Estamos buscando el curso: {{curso}}</p>
+<p>Estamos buscando el terror: {{terror}}</p>
 
-{% for curso in cursos %}
+{% for terror in terror %}
 
-    <p>Nombre: {{curso.curso}} ----- Modalidad: {{curso.modalidad}}</p>
+    <p>Nombre: {{terror.terror}} ----- Autor: {{terror.autor}}</p>
 
 {% endfor %}
 

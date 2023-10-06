@@ -1,63 +1,63 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from AppCoder.models import *
-from .forms import CursoFormulario, ServicioFormulario, CarreraFormulario
+from .forms import TerrorFormulario, CienciaficcionFormulario, FantasiaFormulario
 
 
 def inicio(request):
     return render(request, "AppCoder/inicio.html")
 
-def curso(request):
+def terror(request):
 
-    return render(request, "AppCoder/cursos.html")
+    return render(request, "AppCoder/terror.html")
 
 
-def servicio(request):
+def cienciaficcion(request):
     
-    return render(request, "AppCoder/servicios.html")
+    return render(request, "AppCoder/cienciaficcion.html")
 
-def carrera(request):
+def fantasia(request):
     
-    return render(request, "AppCoder/carreras.html")
+    return render(request, "AppCoder/fantasia.html")
 
-def cursoFormulario(request):
+def terrorFormulario(request):
 
     if request.method == "POST":
 
-        formulario1 = CursoFormulario(request.POST)
+        formulario1 = TerrorFormulario(request.POST)
 
         if formulario1.is_valid():
 
             info = formulario1.cleaned_data
 
-            curso = Cursos(curso=info["curso"], modalidad=info["modalidad"], correo=info["correo"]) 
+            terror = Terror(libro=info["libro"], autor=info["autor"], year=info["year"]) 
 
-            curso.save()
+            terror.save()
 
-            return render(request, "AppCoder/cursos.html")
+            return render(request, "AppCoder/terror.html")
         
     else: 
 
-        formulario1 = CursoFormulario()    
+        formulario1 = TerrorFormulario()    
 
 
-    return render(request, "AppCoder/cursoFormulario.html", {"form1":formulario1})
+        return render(request, "AppCoder/terrorFormulario.html", {"form1":formulario1})
 
 
 
-def busquedaCurso(request):
+def busquedaterror(request):
 
     return render(request, "AppCoder/inicio.html")
 
 
 def resultados(request):
 
-    if request.GET["curso"]:
+    if request.GET["terror"]:
 
-        curso=request.GET["curso"]
-        cursos = Cursos.objects.filter(curso__icontains=curso)
+        terror=request.GET["terror"]
+        terror = terror.objects.filter(terror__icontains=terror)
 
-        return render(request, "AppCoder/inicio.html", {"cursos":cursos, "curso":curso})
+        return render(request, "AppCoder/inicio.html", {"terror":terror})
     
     else:
 
@@ -67,50 +67,66 @@ def resultados(request):
 
 
 
-def servicioFormulario(request):
+def cienciaficcionFormulario(request):
 
     if request.method == "POST":
 
-        formulario1 = ServicioFormulario(request.POST)
+        formulario1 = CienciaficcionFormulario(request.POST)
 
         if formulario1.is_valid():
 
             info = formulario1.cleaned_data
 
-            servicio = Servicio(nombre_servicio=info["nombre_servicio"], forma_de_pago=info["forma_de_pago"], correo=info["correo"]) 
+            cienciaficcion = CienciaFiccion(libro=info["libro"], autor=info["autor"], year=info["year"]) 
 
-            servicio.save()
+            cienciaficcion.save()
 
-            return render(request, "AppCoder/servicios.html")
+            return render(request, "AppCoder/cienciaficcion.html")
         
     else: 
 
-        formulario1 = ServicioFormulario()    
+        formulario1 = CienciaficcionFormulario()    
 
 
-    return render(request, "AppCoder/servicioFormulario.html", {"form1":formulario1})
+    return render(request, "AppCoder/cienciaficcionFormulario.html", {"form1":formulario1})
 
 
-def carreraFormulario(request):
+def fantasiaFormulario(request):
 
     if request.method == "POST":
 
-        formulario1 = CarreraFormulario(request.POST)
+        formulario1 = FantasiaFormulario(request.POST)
 
         if formulario1.is_valid():
 
             info = formulario1.cleaned_data
 
-            carrera = Carreras(nombre_carrera=info["nombre_carrera"], nombre_interesado=info["nombre_interesado"], correo=info["correo"]) 
+            fantasia = Fantasia(libro=info["libro"], autor=info["autor"], year=info["year"]) 
 
-            carrera.save()
+            fantasia.save()
 
-            return render(request, "AppCoder/carreras.html")
+            return render(request, "AppCoder/fantasia.html")
         
     else: 
 
-        formulario1 = CarreraFormulario()    
+        formulario1 = FantasiaFormulario()    
 
 
-    return render(request, "AppCoder/carreraFormulario.html", {"form1":formulario1})
+    return render(request, "AppCoder/fantasiaFormulario.html", {"form1":formulario1})
+
+
+def leerCienciaFiccion(request):
+
+    cienciaficcion = CienciaFiccion.objects.all()
+
+    contexto = {"cienciaf": cienciaficcion}
+    
+    return render(request, "AppCoder/leerCienciaFiccion.html", contexto)
+
+
+def eliminarCienciaFiccion(request):
+
+    cienciaficcion = CienciaFiccion.objects.get
+    pass
+
 

@@ -1,0 +1,46 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+                        
+Bienvenidos a mi página
+
+{% endblock %}
+
+{% block titulo2 %}
+
+
+Ciencia Ficción
+
+{% endblock %}
+
+{% block descripcion %} 
+ Libros Ciencia Ficción
+
+
+{% endblock %}    
+
+{% block form %}
+
+
+<form action="/AppCoder/cienciaficcionFormulario/" method="POST"> {% csrf_token %}
+
+
+
+        <p>Libro: <input type="text" name="libro" > </p>
+        <p>Autor: <input type="text" name="autor" > </p>
+        <p>Year: <input type="text" name="year"></p>
+        <input type="submit" value="Guardar">
+     
+    
+    
+    
+    
+    
+    
+</form>
+
+
+                            
+{% endblock %}    

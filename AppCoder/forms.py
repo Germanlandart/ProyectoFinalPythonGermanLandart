@@ -1,22 +1,22 @@
 from django import forms
 
-class CursoFormulario(forms.Form):
+class TerrorFormulario(forms.Form):
 
-    curso = forms.CharField()
-    modalidad = forms.CharField()
-    correo = forms.EmailField()
+    libros = forms.CharField()
+    autor = forms.CharField()
+    year = forms.IntegerField()
 
 
-class ServicioFormulario(forms.Form):
+class CienciaficcionFormulario(forms.Form):
 
-    nombre_servicio = forms.CharField(max_length=60)
-    forma_de_pago = forms.CharField(max_length=60)
-    correo = forms.EmailField()
+    libros = forms.CharField(max_length=60)
+    autor = forms.CharField(max_length=60)
+    year = forms.IntegerField()
 
-class CarreraFormulario(forms.Form):
+class FantasiaFormulario(forms.Form):
 
-    nombre_carrera = forms.CharField(max_length=60)
-    nombre_interesado = forms.CharField(max_length=60)
-    correo = forms.EmailField()
+    libros = forms.CharField(max_length=60)
+    autor = forms.CharField(max_length=60)
+    year = forms.IntegerField()
  
         
