@@ -24,19 +24,9 @@ Libros de terror
 {% block form %}
 
 
-<form action="/AppCoder/terrorFormulario/" method="POST"> {% csrf_token %}
-
-        <table> {{ form1.as_table }} 
-     
-        <input type="submit" value="Guardar">
-     
-    
-        </table>        
-    
-    
-    
-    
-</form>
+<form action="/AppCoder/terrorFormulario">
+    <h3><button type="submit"> Agregar </button></h3>
+<form>
 
 
                             
