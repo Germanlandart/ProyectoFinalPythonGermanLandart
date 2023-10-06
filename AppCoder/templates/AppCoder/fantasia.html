@@ -1,5 +1,4 @@
 {% extends "AppCoder/padre.html" %}
-
 {% load static %}
 
 {% block titulo %}
@@ -10,35 +9,22 @@ Bienvenidos a mi página
 
 {% block titulo2 %}
 
-
 FANTASIA
 
 {% endblock %}
 
 {% block descripcion %}
-Libros Fantasía
+Libros de fantasia
+
 
 {% endblock %}    
 
 {% block form %}
 
 
-<form action="/AppCoder/fantasia/" method="POST"> {% csrf_token %}
-
-
-
-        <p>Libro: <input type="text" name="libro" > </p>
-        <p>Autor: <input type="text" name="autor" > </p>
-        <p>Year: <input type="text" name="year"></p>
-        <input type="submit" value="Guardar">
-     
-    
-    
-    
-    
-    
-    
-</form>
+<form action="/AppCoder/fantasiaFormulario">
+    <h3><button type="submit"> Agregar </button></h3>
+<form>
 
 
                             

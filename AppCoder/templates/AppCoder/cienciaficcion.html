@@ -11,12 +11,12 @@ Bienvenidos a mi página
 {% block titulo2 %}
 
 
-Ciencia Ficción
+TERROR
 
 {% endblock %}
 
-{% block descripcion %} 
- Libros Ciencia Ficción
+{% block descripcion %}
+Libros de terror
 
 
 {% endblock %}    
@@ -24,22 +24,9 @@ Ciencia Ficción
 {% block form %}
 
 
-<form action="/AppCoder/cienciaficcion/" method="POST"> {% csrf_token %}
-
-
-
-        <p>Libro: <input type="text" name="libro" > </p>
-        <p>Autor: <input type="text" name="autor" > </p>
-        <p>Year: <input type="text" name="year"></p>
-        <input type="submit" value="Guardar">
-     
-    
-    
-    
-    
-    
-    
-</form>
+<form action="/AppCoder/cienciaficcionFormulario">
+    <h3><button type="submit"> Agregar </button></h3>
+<form>
 
 
                             
