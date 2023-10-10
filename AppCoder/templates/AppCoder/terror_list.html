@@ -1,0 +1,47 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+                        
+Bienvenidos a mi página
+
+{% endblock %}
+
+{% block titulo2 %}
+
+
+Empecemos!
+
+{% endblock %}
+
+{% block descripcion %}
+Libros de Terror
+
+
+{% endblock %}    
+
+{% block form %}
+
+{% for terror in object_list %}
+
+<p>Titulo: {{terror.libro}}</p>
+<p>Autor: {{terror.autor}}</p>
+
+
+<a href="{% url 'TerrorDetalle' terror.id %}"> Ver Libro  </a>
+<br> 
+<a href="{% url 'TerrorActualizar' terror.id %}"> Editar Libro  </a>
+<br> 
+<a href="{% url 'TerrorBorrar' terror.id %}"> Eliminar Libro  </a>
+<br>
+
+
+
+
+{% endfor  %}
+
+<a href="{% url 'TerrorCrear' %}"> Agregar Libros  </a>
+
+
+{% endblock %}    

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from AppCoder.models import *
 from .forms import TerrorFormulario, CienciaficcionFormulario, FantasiaFormulario
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
@@ -193,6 +193,33 @@ class BorrarCienciaFiccion(DeleteView):
 
     model = CienciaFiccion
     success_url = "/AppCoder/cienciaficcion/list"   
+    fields = ["libro", "autor", "year"]
+
+
+class ListaFantasia(ListView):
+
+    model = Fantasia
+
+class DetalleFantasia(DetailView):
+
+    model = Fantasia
+
+class CrearFantasia(CreateView):
+
+    model = Fantasia
+    success_url = "/AppCoder/fantasia/list"   
+    fields = ["libro", "autor", "year"]
+
+class ActualizarFantasia(UpdateView):
+
+    model = Fantasia
+    success_url = "/AppCoder/fantasia/list"   
+    fields = ["libro", "autor", "year"]
+
+class BorrarFantasia(DeleteView):
+
+    model = Fantasia
+    success_url = "/AppCoder/fantasia/list"   
     fields = ["libro", "autor", "year"]
            
 
