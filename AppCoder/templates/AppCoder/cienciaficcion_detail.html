@@ -23,11 +23,10 @@ Libros de Ciencia Ficción
 
 {% block form %}
 
+    <p>Libro: {{cienciaficcion.libro}}</p>
+    <p>Autor: {{cienciaficcion.autor}}</p>
+    <p>Year: {{cienciaficcion.year}}</p>
 
-<form action="/AppCoder/cienciaficcion/list">
-    <h3><button type="submit"> Ver todos los títulos </button></h3>
-<form>
-
-
-                            
-{% endblock %}    
+    <a href="{% url 'CienciaFiccionLeer' %}"> Regresar </a>
+    
+{% endblock  %}

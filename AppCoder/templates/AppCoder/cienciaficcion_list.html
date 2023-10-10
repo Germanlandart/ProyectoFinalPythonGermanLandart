@@ -1,0 +1,47 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+                        
+Bienvenidos a mi página
+
+{% endblock %}
+
+{% block titulo2 %}
+
+
+Empecemos!
+
+{% endblock %}
+
+{% block descripcion %}
+Libros de Ciencia Ficción
+
+
+{% endblock %}    
+
+{% block form %}
+
+{% for cienciaficcion in object_list %}
+
+<p>Titulo: {{cienciaficcion.libro}}</p>
+<p>Autor: {{cienciaficcion.autor}}</p>
+
+
+<a href="{% url 'CienciaFiccionDetalle' cienciaficcion.id %}"> Ver Libro  </a>
+<br> 
+<a href="{% url 'CienciaFiccionActualizar' cienciaficcion.id %}"> Editar Libro  </a>
+<br> 
+<a href="{% url 'CienciaFiccionBorrar' cienciaficcion.id %}"> Eliminar Libro  </a>
+<br>
+
+
+
+
+{% endfor  %}
+
+<a href="{% url 'CienciaFiccionCrear' %}"> Agregar Libros  </a>
+
+
+{% endblock %}    

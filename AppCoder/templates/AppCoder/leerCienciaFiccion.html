@@ -22,15 +22,32 @@ Empecemos!
 
 {% for ciencia in cienciaf %}
 
-<p>CienciaFiccion: {{serv.libro}}</p>
-<p>Autor: {{serv.autor}}</p>
-<p>Year: {{serv.year}}</p>
+<p>Ciencia Ficción: {{ciencia.libro}}</p>
+<p>Autor: {{ciencia.autor}}</p>
+<p>Year: {{ciencia.year}}</p>
+
+<button>
+    <a href="{% url 'CienciaFiccionEditar' ciencia.libro %}"> Editar Libro   </a>
+    
+    
+</button>
+
+<button>
+
+    <a href="{% url 'CienciaFiccionEliminar' ciencia.libro %}"> Eliminar Libro   </a>
+</button>
+
+
 
 
 ################################################
 
 
 {% endfor  %}
+
+<a href="{% url 'CienciaFiccionCrear' %}"> Crear Libro   </a>
+
+
 
 
                            

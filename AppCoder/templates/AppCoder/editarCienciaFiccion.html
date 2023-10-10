@@ -1,0 +1,23 @@
+{% extends "AppCoder/padre.html" %}
+{% block titulo %}
+Agregue un libro, su autor y su genero.
+{% endblock %}
+
+
+{% block titulo2 %}
+
+
+CIENCIA FICCIÓN
+
+{% endblock %}
+
+
+
+{% block form %}
+    <form action="" method="POST">{% csrf_token %}
+        <table>
+            {{form1.as_table}}
+        </table>
+        <button type="submit"> Agregar </button>
+    </form> 
+{% endblock  %}
