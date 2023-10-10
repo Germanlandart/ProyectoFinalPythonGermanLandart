@@ -23,11 +23,10 @@ Libros de Fantasía
 
 {% block form %}
 
+    <p>Libro: {{fantasia.libro}}</p>
+    <p>Autor: {{fantasia.autor}}</p>
+    <p>Year: {{fantasia.year}}</p>
 
-<form action="/AppCoder/fantasia/list">
-    <h3><button type="submit"> Agregar </button></h3>
-<form>
-
-
-                            
-{% endblock %}    
+    <a href="{% url 'FantasiaLeer' %}"> Regresar </a>
+    
+{% endblock  %}

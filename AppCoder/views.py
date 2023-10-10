@@ -1,10 +1,69 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from AppCoder.models import *
-from .forms import TerrorFormulario, CienciaficcionFormulario, FantasiaFormulario
+from .forms import *
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
+
+
+
+def InicioSesion(request):
+
+    if request.method == "POST":
+
+        form = AuthenticationForm(request, data = request.POST)
+
+        if form.is_valid():
+
+            usuario = form.cleaned_data.get("username")
+            contra = form.cleaned_data.get("password")
+
+            user = authenticate(username = usuario, password = contra)
+
+            if user:
+
+                login(request, user)
+
+                return render(request, "AppCoder/inicio.html", {"mensaje":f"Bienvenido {user}"})
+            
+        else:
+
+                return render(request, "AppCoder/inicio.html", {"mensaje":f"Datos incorrectos"})
+    else:
+
+        form = AuthenticationForm()
+
+    return render(request, "AppCoder/login.html", {"formulario":form})    
+
+             
+
+
+
+def registro(request):
+
+    if request.method == "POST":
+
+        form = UsuarioRegistro(request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data["username"]
+            form.save()
+            return render(request, "AppCoder/inicio.html", {"mensaje":"Usuario creado."})
+        
+    else:
+
+        form = UsuarioRegistro()
+
+    return render(request, "AppCoder/registro.html", {"formulario":form})           
+
+
 
 def inicio(request):
     return render(request, "AppCoder/inicio.html")
@@ -169,58 +228,82 @@ def editarCienciaFiccion (request, nombreLibro):
     return render(request, "AppCoder/editarCienciaFiccion.html", {"form1":formulario1, "libro":nombreLibro})
 
 
-class ListaCienciaFiccion(ListView):
+class ListaCienciaFiccion(LoginRequiredMixin, ListView):
 
     model = CienciaFiccion
 
-class DetalleCienciaFiccion(DetailView):
+class DetalleCienciaFiccion(LoginRequiredMixin, DetailView):
 
     model = CienciaFiccion
 
-class CrearCienciaFiccion(CreateView):
-
-    model = CienciaFiccion
-    success_url = "/AppCoder/cienciaficcion/list"   
-    fields = ["libro", "autor", "year"]
-
-class ActualizarCienciaFiccion(UpdateView):
+class CrearCienciaFiccion(LoginRequiredMixin, CreateView):
 
     model = CienciaFiccion
     success_url = "/AppCoder/cienciaficcion/list"   
     fields = ["libro", "autor", "year"]
 
-class BorrarCienciaFiccion(DeleteView):
+class ActualizarCienciaFiccion(LoginRequiredMixin, UpdateView):
+
+    model = CienciaFiccion
+    success_url = "/AppCoder/cienciaficcion/list"   
+    fields = ["libro", "autor", "year"]
+
+class BorrarCienciaFiccion(LoginRequiredMixin, DeleteView):
 
     model = CienciaFiccion
     success_url = "/AppCoder/cienciaficcion/list"   
     fields = ["libro", "autor", "year"]
 
 
-class ListaFantasia(ListView):
+class ListaFantasia(LoginRequiredMixin, ListView):
 
     model = Fantasia
 
-class DetalleFantasia(DetailView):
+class DetalleFantasia(LoginRequiredMixin, DetailView):
 
     model = Fantasia
 
-class CrearFantasia(CreateView):
+class CrearFantasia(LoginRequiredMixin, CreateView):
 
     model = Fantasia
     success_url = "/AppCoder/fantasia/list"   
     fields = ["libro", "autor", "year"]
 
-class ActualizarFantasia(UpdateView):
+class ActualizarFantasia(LoginRequiredMixin, UpdateView):
 
     model = Fantasia
     success_url = "/AppCoder/fantasia/list"   
     fields = ["libro", "autor", "year"]
 
-class BorrarFantasia(DeleteView):
+class BorrarFantasia(LoginRequiredMixin, DeleteView):
 
     model = Fantasia
     success_url = "/AppCoder/fantasia/list"   
     fields = ["libro", "autor", "year"]
            
 
+class ListaTerror(LoginRequiredMixin, ListView):
 
+    model = Terror
+
+class DetalleTerror(LoginRequiredMixin, DetailView):
+
+    model = Terror
+
+class CrearTerror(LoginRequiredMixin, CreateView):
+
+    model = Terror
+    success_url = "/AppCoder/terror/list"   
+    fields = ["libro", "autor", "year"]
+
+class ActualizarTerror(LoginRequiredMixin, UpdateView):
+
+    model = Terror
+    success_url = "/AppCoder/terror/list"   
+    fields = ["libro", "autor", "year"]
+
+class BorrarTerror(LoginRequiredMixin, DeleteView):
+
+    model = Terror
+    success_url = "/AppCoder/terror/list"   
+    fields = ["libro", "autor", "year"]

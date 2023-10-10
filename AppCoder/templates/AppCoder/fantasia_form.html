@@ -1,0 +1,23 @@
+{% extends "AppCoder/padre.html" %}
+{% block titulo %}
+AGREGUE UN LIBRO
+{% endblock %}
+
+
+{% block titulo2 %}
+
+
+FANTASÍA
+
+{% endblock %}
+
+
+
+{% block form %}
+<form method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Agregar</button>
+</form>
+<br>
+{% endblock  %}

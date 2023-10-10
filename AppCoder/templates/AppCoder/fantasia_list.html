@@ -1,0 +1,47 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+                        
+Bienvenidos a mi página
+
+{% endblock %}
+
+{% block titulo2 %}
+
+
+Empecemos!
+
+{% endblock %}
+
+{% block descripcion %}
+Libros de Fantasía
+
+
+{% endblock %}    
+
+{% block form %}
+
+{% for fantasia in object_list %}
+
+<p>Titulo: {{fantasia.libro}}</p>
+<p>Autor: {{fantasia.autor}}</p>
+
+
+<a href="{% url 'FantasiaDetalle' fantasia.id %}"> Ver Libro  </a>
+<br> 
+<a href="{% url 'FantasiaActualizar' fantasia.id %}"> Editar Libro  </a>
+<br> 
+<a href="{% url 'FantasiaBorrar' fantasia.id %}"> Eliminar Libro  </a>
+<br>
+
+
+
+
+{% endfor  %}
+
+<a href="{% url 'FantasiaCrear' %}"> Agregar Libros  </a>
+
+
+{% endblock %}    

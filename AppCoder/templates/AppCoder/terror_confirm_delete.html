@@ -1,0 +1,25 @@
+{% extends "AppCoder/padre.html" %}
+{% block titulo %}
+AGREGUE UN LIBRO
+{% endblock %}
+
+
+{% block titulo2 %}
+
+
+TERROR
+
+{% endblock %}
+
+
+
+{% block form %}
+<form method="POST" >
+    <p>¿Estás seguro de que quieres eliminar este libro?</p>
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Eliminar</button>
+</form>
+<br>
+{% endblock  %}

@@ -1,6 +1,6 @@
 from django.urls import path
 from AppCoder.views import *
-
+from django.contrib.auth.views import LogoutView
 
 
 urlpatterns = [
@@ -20,8 +20,9 @@ urlpatterns = [
     path("fantasia/crear/", CrearFantasia.as_view(), name="FantasiaCrear"),
     path("fantasia/editar/<int:pk>", ActualizarFantasia.as_view(), name="FantasiaActualizar"),
     path("fantasia/borrar/<int:pk>", BorrarFantasia.as_view(), name="FantasiaBorrar"),
-    
-  
+    path("login/", InicioSesion, name="Login"),
+    path("register/", registro, name="SignUp"),
+    path("logout/", LogoutView.as_view(template_name="AppCoder/logout.html"), name="Logout"),
     
     ]
 

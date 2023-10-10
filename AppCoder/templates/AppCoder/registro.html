@@ -4,30 +4,32 @@
 
 {% block titulo %}
                         
-Bienvenidos a mi página
+Aquí se registra
 
 {% endblock %}
 
 {% block titulo2 %}
 
 
-FANTASÍA
+Empecemos!
 
 {% endblock %}
 
+
 {% block descripcion %}
-Libros de Fantasía
+
+<form action="" method="POST">{% csrf_token %}
+
+    {{formulario.as_p}}
+
+    <button type="submit">Registrarse</button>
 
 
-{% endblock %}    
 
-{% block form %}
-
-
-<form action="/AppCoder/fantasia/list">
-    <h3><button type="submit"> Agregar </button></h3>
-<form>
-
+                           
 
                             
 {% endblock %}    
+
+
+

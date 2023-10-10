@@ -11,23 +11,22 @@ Bienvenidos a mi página
 {% block titulo2 %}
 
 
-FANTASÍA
+TERROR
 
 {% endblock %}
 
 {% block descripcion %}
-Libros de Fantasía
+Libros de Terror
 
 
 {% endblock %}    
 
 {% block form %}
 
+    <p>Libro: {{terror.libro}}</p>
+    <p>Autor: {{terror.autor}}</p>
+    <p>Year: {{terror.year}}</p>
 
-<form action="/AppCoder/fantasia/list">
-    <h3><button type="submit"> Agregar </button></h3>
-<form>
-
-
-                            
-{% endblock %}    
+    <a href="{% url 'TerrorLeer' %}"> Regresar </a>
+    
+{% endblock  %}
