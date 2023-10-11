@@ -63,54 +63,49 @@ def registro(request):
 
     return render(request, "AppCoder/registro.html", {"formulario":form})           
 
+@login_required
+def editarUsuario(request):
+
+    usuario = request.user
+    
+    if request.method == "POST":
+
+        form = FormularioEditar(request.POST)
+
+        if form.is_valid():
+
+            info = form.cleaned_data
+
+            usuario.email = info["email"]
+            usuario.set_password(info["password1"])
+            usuario.first_name = info["first_name"]
+            usuario.last_name = info["last_name"]
+
+            usuario.save()
+
+            return render(request, "AppCoder/inicio.html")
+        
+    else: 
+
+        form = FormularioEditar(initial={
+            "email":usuario.email,
+            "first_name":usuario.first_name,
+            "last_name":usuario.last_name,
+        })    
+
+    return  render(request, "AppCoder/editarPerfil.html", {"formulario":form, "usuario":usuario})   
+
 
 
 def inicio(request):
     return render(request, "AppCoder/inicio.html")
-
-def terror(request):
-
-    return render(request, "AppCoder/terror.html")
-
-
-def cienciaficcion(request):
-    
-    return render(request, "AppCoder/cienciaficcion.html")
-
-def fantasia(request):
-    
-    return render(request, "AppCoder/fantasia.html")
-
-def crearTerror(request):
-
-    if request.method == "POST":
-
-        formulario1 = TerrorFormulario(request.POST)
-
-        if formulario1.is_valid():
-
-            info = formulario1.cleaned_data
-
-            terror = Terror(libro=info["libro"], autor=info["autor"], year=info["year"]) 
-
-            terror.save()
-
-            return render(request, "AppCoder/terror.html")
-        
-    else: 
-
-        formulario1 = TerrorFormulario()    
-
-
-        return render(request, "AppCoder/crearTerror.html", {"form1":formulario1})
-
 
 
 def busquedaterror(request):
 
     return render(request, "AppCoder/inicio.html")
 
-
+@login_required
 def resultados(request):
 
     if request.GET["terror"]:
@@ -126,106 +121,6 @@ def resultados(request):
 
     return HttpResponse(respuesta)
 
-
-
-def crearCienciaFiccion(request):
-
-    if request.method == "POST":
-
-        formulario1 = CienciaficcionFormulario(request.POST)
-
-        if formulario1.is_valid():
-
-            info = formulario1.cleaned_data
-
-            cienciaficcion = CienciaFiccion(libro=info["libro"], autor=info["autor"], year=info["year"]) 
-
-            cienciaficcion.save()
-
-            return render(request, "AppCoder/cienciaficcion.html")
-        
-    else: 
-
-        formulario1 = CienciaficcionFormulario()    
-
-
-    return render(request, "AppCoder/crearCienciaFiccion.html", {"form1":formulario1})
-
-
-def crearFantasia(request):
-
-    if request.method == "POST":
-
-        formulario1 = FantasiaFormulario(request.POST)
-
-        if formulario1.is_valid():
-
-            info = formulario1.cleaned_data
-
-            fantasia = Fantasia(libro=info["libro"], autor=info["autor"], year=info["year"]) 
-
-            fantasia.save()
-
-            return render(request, "AppCoder/fantasia.html")
-        
-    else: 
-
-        formulario1 = FantasiaFormulario()    
-
-
-    return render(request, "AppCoder/crearFantasia.html", {"form1":formulario1})
-
-
-def leerCienciaFiccion(request):
-
-    cienciaficcion = CienciaFiccion.objects.all()
-
-    contexto = {"cienciaf": cienciaficcion}
-    
-    return render(request, "AppCoder/leerCienciaFiccion.html", contexto)
-
-
-def eliminarCienciaFiccion(request, nombreLibro):
-
-    cienciaficcion = CienciaFiccion.objects.get(libro=nombreLibro)
-    cienciaficcion.delete()
-
-    libros = CienciaFiccion.objects.all()
-
-    contexto = {"cienciaf":libros}
-
-    return render(request, "AppCoder/leerCienciaFiccion.html", contexto)
-
-
-
-def editarCienciaFiccion (request, nombreLibro):
-
-    cienciaficcion = CienciaFiccion.objects.get(libro=nombreLibro)
-    
-    if  request.method == "POST":
-
-        formulario1 = CienciaficcionFormulario(request.POST)
-
-        if formulario1.is_valid():
-
-            info = formulario1.cleaned_data
-
-            cienciaficcion.libro = info["libro"]
-            cienciaficcion.autor = info["autor"]
-            cienciaficcion.year = info["year"]
-
-            cienciaficcion.save()
-
-            return render(request, "AppCoder/cienciaficcion.html")
-        
-    else: 
-
-        formulario1 = CienciaficcionFormulario(initial={"nombre":cienciaficcion.libro, "autor":cienciaficcion.autor, 
-                                                        "year":cienciaficcion.year})  
-          
-
-
-    return render(request, "AppCoder/editarCienciaFiccion.html", {"form1":formulario1, "libro":nombreLibro})
 
 
 class ListaCienciaFiccion(LoginRequiredMixin, ListView):

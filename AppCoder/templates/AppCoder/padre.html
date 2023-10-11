@@ -30,7 +30,22 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'TerrorLeer' %}">Terror</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'CienciaFiccionLeer' %}">Ciencia Ficcion</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'FantasiaLeer' %}">Fantasia</a></li>
+
+                        {% if request.user.is_authenticated %}
+                        
+                        <p style="color: white;">Hola {{user.first_name}} {{user.last_name}}</p>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'EditarUsuario' %}">Editar Usuario</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Logout' %}">Cerrar Sesión</a></li>
+                        
+                        {% else %}
+
+                        <li class="nav-item"><a class="nav-link" href="{% url 'SignUp' %}">Registrarse</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Login' %}">Iniciar Sesión</a></li>
+
+                        {% endif %}    
+
+                        
+                        
                     </ul>
                 </div>
             </div>

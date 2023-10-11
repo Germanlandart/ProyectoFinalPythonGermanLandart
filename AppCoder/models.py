@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User 
 
 class Terror(models.Model):
     
@@ -32,4 +33,11 @@ class Fantasia(models.Model):
     libro = models.CharField(max_length=60)
     autor = models.CharField(max_length=60)
     year = models.IntegerField()
-        
+
+
+class Avatar(models.Model):
+
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to="avatares", null=True, blank=True)
+
+

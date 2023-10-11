@@ -23,6 +23,7 @@ urlpatterns = [
     path("login/", InicioSesion, name="Login"),
     path("register/", registro, name="SignUp"),
     path("logout/", LogoutView.as_view(template_name="AppCoder/logout.html"), name="Logout"),
-    
+    path("editar/", editarUsuario, name="EditarUsuario"),
+
     ]
 
