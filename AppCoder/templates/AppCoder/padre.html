@@ -34,6 +34,18 @@
                         {% if request.user.is_authenticated %}
                         
                         <p style="color: white;">Hola {{user.first_name}} {{user.last_name}}</p>
+                        
+                        {% with user.avatar_set.first as miAvatar %}
+                        
+                        {% if miAvatar  %}
+
+                        <img src="{{miAvatar.imagen.url}}" alt="No encontró la imagen" style="max-width: 100px">
+                        
+                        
+                        {% endif %}
+                        
+                        {% endwith %}
+
                         <li class="nav-item"><a class="nav-link" href="{% url 'EditarUsuario' %}">Editar Usuario</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'Logout' %}">Cerrar Sesión</a></li>
                         

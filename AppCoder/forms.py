@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from AppCoder.models import Avatar
 
 class TerrorFormulario(forms.Form):
 
@@ -49,3 +50,9 @@ class FormularioEditar(UserCreationForm):
 
 
 
+class AvatarFormulario(forms.ModelForm):
+
+    class Meta:
+
+        model = Avatar
+        fields = ["imagen"]

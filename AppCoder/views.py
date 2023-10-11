@@ -122,6 +122,30 @@ def resultados(request):
     return HttpResponse(respuesta)
 
 
+@login_required
+def agregarAvatar(request):
+
+    if request.method =="POST":
+
+        form = AvatarFormulario(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            usuarioActual = User.objects.get(username=request.user)
+
+            avatar = Avatar(usuario=usuarioActual, imagen=form.cleaned_data["imagen"])
+
+            avatar.save()
+
+            return render(request, "AppCoder/inicio.html")
+        
+    else:
+
+        form = AvatarFormulario()
+
+    return render(request,"AppCoder/agregarAvatar.html", {"formulario":form})        
+
+
 
 class ListaCienciaFiccion(LoginRequiredMixin, ListView):
 
