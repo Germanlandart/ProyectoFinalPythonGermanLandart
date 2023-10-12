@@ -25,20 +25,20 @@ Libros de Fantasía
 {% block form %}
   
 
-    <div class="container">
-        <h1>Agrega un comentario sobre este libro</h1>
-    </div>
+<div class="container">
+    <h1>Agrega un comentario sobre este libro</h1>
+</div>
 
-    {% endblock  %}
+{% endblock  %}
 
-    {% block contenido %}               
-    <div class="form-group">
-    <form method="post">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
-    </div>
-    <br>
+{% block contenido %}               
+<div class="form-group">
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+</div>
+<br>
    
     
     {% endblock  %}

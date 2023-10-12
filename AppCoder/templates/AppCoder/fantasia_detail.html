@@ -36,13 +36,13 @@ Libros de Fantasía
     {% if not fantasia.comentarios.all %}
         No han comentado este libro
     {% else %}
-        {% for comentario in fantasia.comentarios.all %}
-        <p>Comentario de {{comentario.nombre}}</p>
-        <p>Mensaje: {{comentario.mensaje}}</p>
+        {% for comentariof in fantasia.comentarios.all %}
+        <p>Comentario de {{comentariof.nombre}}</p>
+        <p>Mensaje: {{comentariof.mensaje}}</p>
         <hr>
         {% endfor %}
     {% endif %}
-    <a href="{% url 'ComentarioFantasia' fantasia.id %}"> Agregar Comentarios  </a>
+    <a href="{% url 'ComentarioFantasia' fantasia.pk %}"> Agregar Comentarios  </a>
     </div>
 </div>
 <br>

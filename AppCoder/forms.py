@@ -14,7 +14,15 @@ class FormularioComentario(forms.ModelForm):
         model = Comentario
         fields = ('nombre', 'mensaje')
         
-       
+class FormularioComentarioF(forms.ModelForm):
+    class Meta:
+        model = ComentarioF
+        fields = ('nombre', 'mensaje')       
+
+class FormularioComentarioCF(forms.ModelForm):
+    class Meta:
+        model = ComentarioCF
+        fields = ('nombre', 'mensaje')              
 
 class CienciaficcionFormulario(forms.ModelForm):
 

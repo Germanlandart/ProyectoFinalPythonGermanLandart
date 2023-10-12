@@ -22,12 +22,31 @@ Libros de Ciencia Ficción
 {% endblock %}    
 
 {% block form %}
-    <p>Usuario: {{cienciaficcion.usuario}}</p>
-    <p>Libro: {{cienciaficcion.libro}}</p>
-    <p>Autor: {{cienciaficcion.autor}}</p>
-    <p>Portada: <img src="{{ cienciaficcion.imagen.url }}"  height="200 px" alt="Descripción de la imagen"> </p>
-    <p>Year: {{cienciaficcion.year}}</p>
-    <p>Descripción: {{cienciaficcion.descripcion}}</p>
-    
-    <a href="{% url 'CienciaFiccionLeer' %}"> Regresar </a>
+
+<p>Usuario: {{cienciaficcion.usuario}}</p>
+<p>Libro: {{cienciaficcion.libro}}</p>
+<p>Autor: {{cienciaficcion.autor}}</p>
+<p>Portada: <img src="{{ cienciaficcion.imagen.url }}"  height="200 px" alt="Descripción de la imagen"> </p>
+<p>Year: {{cienciaficcion.year}}</p>
+<p>Descripción: {{cienciaficcion.descripcion}}</p>
+
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not cienciaficcion.comentarios.all %}
+        No han comentado este libro
+    {% else %}
+        {% for comentariocf in cienciaficcion.comentarios.all %}
+        <p>Comentario de {{comentariocf.nombre}}</p>
+        <p>Mensaje: {{comentariocf.mensaje}}</p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'ComentarioCienciaFiccion' cienciaficcion.pk %}"> Agregar Comentarios  </a>
+    </div>
+</div>
+<br>
+
+<a href="{% url 'CienciaFiccionLeer' %}"> Regresar </a>
 {% endblock  %}
