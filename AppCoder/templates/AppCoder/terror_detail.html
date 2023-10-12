@@ -26,11 +26,26 @@ Libros de Terror
     <p>Libro: {{terror.libro}}</p>
     <p>Autor: {{terror.autor}}</p>
     <p>Portada: <img src="{{ terror.imagen.url }}"  height="200 px" alt="Descripción de la imagen"> </p>
-    
-    
-    
     <p>Year: {{terror.year}}</p>
     <p>Descripción: {{terror.descripcion}}</p>
     
+    <div class="container">
+        <h4>Comentarios...</h4>
+        <br>
+        <div class="container">
+        {% if not terror.comentarios.all %}
+            No han comentado este libro
+        {% else %}
+            {% for comentario in terror.comentarios.all %}
+            <p>Comentario de {{comentario.nombre}}</p>
+            <p>Mensaje: {{comentario.mensaje}}</p>
+            <hr>
+            {% endfor %}
+        {% endif %}
+        <a href="{% url 'ComentarioTerror' terror.id %}"> Agregar Comentarios  </a>
+        </div>
+    </div>
+    <br>
+
     <a href="{% url 'TerrorLeer' %}"> Regresar </a>
 {% endblock  %}

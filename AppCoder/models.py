@@ -14,6 +14,12 @@ class Terror(models.Model):
         
         return f"Libro: {self.libro} ------ Autor: {self.autor} ------ Year: {self.year}"
     
+class Comentario(models.Model):
+    comentario = models.ForeignKey(Terror, related_name='comentarios', on_delete=models.CASCADE, null=True)
+    nombre = models.CharField(max_length=40)
+    mensaje = models.TextField(null=True, blank=True)
+    
+    
         
 
 class CienciaFiccion(models.Model):

@@ -27,6 +27,7 @@ Libros de Fantasía
 
 <p>Titulo: {{fantasia.libro}}</p>
 <p>Autor: {{fantasia.autor}}</p>
+<p>Portada: <img src="{{ fantasia.imagen.url }}"  height="50 px" alt="Descripción de la imagen"> </p>
 
 
 <a href="{% url 'FantasiaDetalle' fantasia.id %}"> Ver Libro  </a>

@@ -27,6 +27,7 @@ Libros de Ciencia Ficción
 
 <p>Titulo: {{cienciaficcion.libro}}</p>
 <p>Autor: {{cienciaficcion.autor}}</p>
+<p>Portada: <img src="{{ cienciaficcion.imagen.url }}"  height="50 px" alt="Descripción de la imagen"> </p>
 
 
 <a href="{% url 'CienciaFiccionDetalle' cienciaficcion.id %}"> Ver Libro  </a>

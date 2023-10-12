@@ -212,3 +212,13 @@ class BorrarTerror(LoginRequiredMixin, DeleteView):
     model = Terror
     success_url = "/AppCoder/terror/list"   
     fields = ["usuario","libro", "autor", "year", "imagen", "descripcion"]
+
+class Comentario(LoginRequiredMixin, CreateView):
+    model = Comentario
+    form_class = FormularioComentario
+    template_name = '/comentario.html'
+    success_url = "/AppCoder/terror/list"
+
+    def form_valid(self, form):
+        form.instance.comentario_id = self.kwargs['pk']
+        return super(Comentario, self).form_valid(form)

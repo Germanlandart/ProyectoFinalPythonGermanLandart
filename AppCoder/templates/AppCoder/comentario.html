@@ -1,0 +1,43 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+                        
+Bienvenidos a mi página
+
+{% endblock %}
+
+{% block titulo2 %}
+
+
+TERROR
+
+{% endblock %}
+
+{% block descripcion %}
+Libros de Terror
+
+
+{% endblock %}    
+
+
+{% block form %}
+    <p>Usuario: {{terror.usuario}}</p>
+    <div class="container">
+        <h1>Agrega un comentario sobre este libro</h1>
+    </div>
+
+    {% endblock  %}
+
+    {% block contenido %}               
+    <div class="form-group">
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+    </div>
+    <br>
+   
+    
+    {% endblock  %}
