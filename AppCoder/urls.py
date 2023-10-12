@@ -1,6 +1,7 @@
 from django.urls import path
 from AppCoder.views import *
 from django.contrib.auth.views import LogoutView
+from AppCoder import views
 
 
 urlpatterns = [
@@ -26,6 +27,8 @@ urlpatterns = [
     path("editar/", editarUsuario, name="EditarUsuario"),
     path("agregar/", agregarAvatar, name="Avatar"),
     path("aboutme/", about , name="About"),
-
+    path("agregarimagen/", views.agregarImagen, name="agregarImagen"),
+    
+    
     ]
 

@@ -1,13 +1,14 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from AppCoder.models import Avatar
+from AppCoder.models import Avatar, Terror
 
-class TerrorFormulario(forms.Form):
 
-    libro = forms.CharField()
-    autor = forms.CharField()
-    year = forms.IntegerField()
+class TerrorFormulario(forms.ModelForm):
+    class Meta:
+        model = Terror
+        fields = ('libro', 'autor', 'year', 'imagen', 'descripcion', 'usuario')
+        
 
 
 class CienciaficcionFormulario(forms.Form):
@@ -56,4 +57,7 @@ class AvatarFormulario(forms.ModelForm):
 
         model = Avatar
         fields = ["imagen"]
+
+
+
 

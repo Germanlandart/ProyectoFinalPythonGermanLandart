@@ -18,16 +18,14 @@ Empecemos!
 
 {% block descripcion %}
 
-Para poder acceder a todo el contenido, por favor regístrese o inicie sesión.
-
-
+<form action="" method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Publicar</button>
+</form>
                   
                             
 {% endblock %}    
-
-
-
-
 
 
 

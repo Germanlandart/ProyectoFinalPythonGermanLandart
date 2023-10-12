@@ -22,11 +22,15 @@ Libros de Terror
 {% endblock %}    
 
 {% block form %}
-
+    <p>Usuario: {{terror.usuario}}</p>
     <p>Libro: {{terror.libro}}</p>
     <p>Autor: {{terror.autor}}</p>
-    <p>Year: {{terror.year}}</p>
-
-    <a href="{% url 'TerrorLeer' %}"> Regresar </a>
+    <p>Portada: <img src="{{ terror.imagen.url }}"  height="200 px" alt="Descripción de la imagen"> </p>
     
+    
+    
+    <p>Year: {{terror.year}}</p>
+    <p>Descripción: {{terror.descripcion}}</p>
+    
+    <a href="{% url 'TerrorLeer' %}"> Regresar </a>
 {% endblock  %}

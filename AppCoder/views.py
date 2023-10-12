@@ -30,11 +30,11 @@ def InicioSesion(request):
 
                 login(request, user)
 
-                return render(request, "AppCoder/inicio.html", {"mensaje":f"Bienvenido {user}"})
+                return render(request, "AppCoder/inicio2.html", {"mensaje":f"Bienvenido {user}"})
             
         else:
 
-                return render(request, "AppCoder/inicio.html", {"mensaje":f"Datos incorrectos"})
+                return render(request, "AppCoder/inicio2.html", {"mensaje":f"Datos incorrectos"})
     else:
 
         form = AuthenticationForm()
@@ -55,7 +55,7 @@ def registro(request):
 
             username = form.cleaned_data["username"]
             form.save()
-            return render(request, "AppCoder/inicio.html", {"mensaje":"Usuario creado."})
+            return render(request, "AppCoder/inicio2.html", {"mensaje":"Usuario creado."})
         
     else:
 
@@ -83,7 +83,7 @@ def editarUsuario(request):
 
             usuario.save()
 
-            return render(request, "AppCoder/inicio.html", {"mensaje":"Bienvenidos a mi página"})
+            return render(request, "AppCoder/inicio2.html", {"mensaje":"Usuario editado correctamente."})
         
     else: 
 
@@ -98,10 +98,33 @@ def editarUsuario(request):
 
 
 def inicio(request):
-    return render(request, "AppCoder/inicio.html", {"mensaje":"Bienvenidos a mi página"})
+    return render(request, "AppCoder/inicio.html", {"mensaje":"Usuario creado."})
 
 def about(request):  
     return render(request, "AppCoder/aboutme.html")
+
+@login_required
+def agregarImagen(request):
+
+    if request.method == "POST":
+        miFormulario= TerrorFormulario(request.POST, request.FILES)
+
+        if miFormulario.is_valid():
+
+            informacion = miFormulario.cleaned_data
+            
+            imagen = TerrorFormulario(usuario=informacion["usuario"], imagen=informacion["imagen"])
+
+            imagen.save()
+
+            return render(request, "AppCoder/inicio.html")
+
+    else:
+
+            miFormulario = TerrorFormulario()
+       
+       
+    return render(request, "AppCoder/agregarimg.html", {"form":miFormulario})
 
 
 @login_required
@@ -117,7 +140,7 @@ def agregarAvatar(request):
             avatar = Avatar(usuario=usuarioActual, imagen=form.cleaned_data["imagen"])
             avatar.save()
 
-            return render(request, "AppCoder/inicio.html")
+            return render(request, "AppCoder/inicio2.html")
 
     else:
         form = AvatarFormulario()
@@ -189,19 +212,18 @@ class DetalleTerror(LoginRequiredMixin, DetailView):
     model = Terror
 
 class CrearTerror(LoginRequiredMixin, CreateView):
-
     model = Terror
     success_url = "/AppCoder/terror/list"   
-    fields = ["libro", "autor", "year"]
+    fields = ["usuario","libro", "autor", "year", "imagen", "descripcion"]
 
 class ActualizarTerror(LoginRequiredMixin, UpdateView):
 
     model = Terror
     success_url = "/AppCoder/terror/list"   
-    fields = ["libro", "autor", "year"]
+    form_class = TerrorFormulario
 
 class BorrarTerror(LoginRequiredMixin, DeleteView):
 
     model = Terror
     success_url = "/AppCoder/terror/list"   
-    fields = ["libro", "autor", "year"]
+    form_class = TerrorFormulario
