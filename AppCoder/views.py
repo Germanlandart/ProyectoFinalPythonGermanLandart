@@ -83,7 +83,7 @@ def editarUsuario(request):
 
             usuario.save()
 
-            return render(request, "AppCoder/inicio.html")
+            return render(request, "AppCoder/inicio.html", {"mensaje":"Bienvenidos a mi página"})
         
     else: 
 
@@ -98,52 +98,31 @@ def editarUsuario(request):
 
 
 def inicio(request):
-    return render(request, "AppCoder/inicio.html")
+    return render(request, "AppCoder/inicio.html", {"mensaje":"Bienvenidos a mi página"})
 
-
-def busquedaterror(request):
-
-    return render(request, "AppCoder/inicio.html")
-
-@login_required
-def resultados(request):
-
-    if request.GET["terror"]:
-
-        terror=request.GET["terror"]
-        terror = terror.objects.filter(terror__icontains=terror)
-
-        return render(request, "AppCoder/inicio.html", {"terror":terror})
-    
-    else:
-
-        respuesta = "No enviaste datos."
-
-    return HttpResponse(respuesta)
+def about(request):  
+    return render(request, "AppCoder/aboutme.html")
 
 
 @login_required
 def agregarAvatar(request):
-
-    if request.method =="POST":
-
+    if request.method == "POST":
         form = AvatarFormulario(request.POST, request.FILES)
 
         if form.is_valid():
+            usuarioActual = request.user
 
-            usuarioActual = User.objects.get(username=request.user)
+            usuarioActual.avatar_set.all().delete()
 
             avatar = Avatar(usuario=usuarioActual, imagen=form.cleaned_data["imagen"])
-
             avatar.save()
 
             return render(request, "AppCoder/inicio.html")
-        
-    else:
 
+    else:
         form = AvatarFormulario()
 
-    return render(request,"AppCoder/agregarAvatar.html", {"formulario":form})        
+    return render(request, "AppCoder/agregarAvatar.html", {"formulario": form})
 
 
 

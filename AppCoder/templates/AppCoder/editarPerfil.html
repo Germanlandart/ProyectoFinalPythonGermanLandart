@@ -8,16 +8,22 @@ Aquí se edita el usuario
 
 {% endblock %}
 
+{% block titulo2 %}
+                        
+VAMOS ALLÍ
+
+{% endblock %}
+
+
 
 
 {% block descripcion %}
 
-<form action="" method="POST">{% csrf_token %}
-
-    {{formulario.as_p}}
-
-    <button type="submit"> Editar </button>
-
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+</form>
 
                             
 {% endblock %}    

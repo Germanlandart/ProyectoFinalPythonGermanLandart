@@ -28,25 +28,30 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'TerrorLeer' %}">Terror</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'CienciaFiccionLeer' %}">Ciencia Ficcion</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'About' %}">About Me</a></li>
+                        
 
                         {% if request.user.is_authenticated %}
                         
-                        <p style="color: white;">Hola {{user.first_name}} {{user.last_name}}</p>
+                        <li class="nav-item" style="display: flex; align-items: center;">
+                        <p class="nav-link" style="color: rgba(255, 255, 255, 0.5);">Hola {{user.first_name}} {{user.last_name}}</p>
                         
                         {% with user.avatar_set.first as miAvatar %}
                         
                         {% if miAvatar  %}
+                        
 
-                        <img src="{{miAvatar.imagen.url}}" alt="No encontró la imagen" style="max-width: 100px">
+                        <img src="{{miAvatar.imagen.url}}" alt="No encontró la imagen" width="75" height="75">
                         
                         
                         {% endif %}
                         
                         {% endwith %}
-
+                        <li class="nav-item"><a class="nav-link" href="{% url 'TerrorLeer' %}">Terror</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'CienciaFiccionLeer' %}">Ciencia Ficcion</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'FantasiaLeer' %}">Fantasía</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'EditarUsuario' %}">Editar Usuario</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Avatar' %}">Añadir Avatar</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'Logout' %}">Cerrar Sesión</a></li>
                         
                         {% else %}
@@ -73,7 +78,7 @@
                         {% endblock %}
                         </h1> 
                         <h2 class="text-white-50 mx-auto mt-2 mb-5"></h2>
-                        <a class="btn btn-primary" href="#about">
+                        <a class="btn btn-primary" href="#bajar">
                             {% block titulo2 %}
 
                             
@@ -84,7 +89,7 @@
             </div>
         </header>
         <!-- About-->
-        <section class="about-section text-center" id="about">
+        <section class="about-section text-center" id="bajar">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">

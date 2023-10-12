@@ -56,3 +56,4 @@ class AvatarFormulario(forms.ModelForm):
 
         model = Avatar
         fields = ["imagen"]
+

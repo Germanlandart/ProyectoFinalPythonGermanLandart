@@ -1,0 +1,48 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+                        
+Bienvenidos a la página de Germán
+
+{% endblock %}
+
+{% block titulo2 %}
+
+Sobre mí
+
+
+{% endblock %}
+
+
+{% block descripcion %}
+<style>
+    .contenedor {
+        display: flex
+        align-items: center
+    }
+
+    .imagen {
+        width: 100px
+        height: auto
+        margin-right: 10px
+    }
+</style>
+</head>
+<body>
+<div class="contenedor">
+    <img class="imagen" src="{% static 'AppCoder/asd.png' %}" width="170" height="170">
+</div>
+</body>
+</html>
+
+<p>
+    Hola! Mi nombre es Germán Landart, soy técnico en recursos humanos y estoy recién empezando en el mundo de la programación, 
+mayormente para ampliar mis horizontes. Decidí inclinarme por la programación ya que es un rubro en el que siempre tuve interés. 
+Muchas gracias por visitar mi página!
+
+</p>
+
+
+{% endblock %}
