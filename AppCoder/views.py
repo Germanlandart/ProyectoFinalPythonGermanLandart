@@ -222,3 +222,24 @@ class Comentario(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.comentario_id = self.kwargs['pk']
         return super(Comentario, self).form_valid(form)
+    
+class ComentarioCF(LoginRequiredMixin, CreateView):
+    model = ComentarioCF
+    form_class = FormularioComentario
+    template_name = '/comentariocf.html'
+    success_url = "/AppCoder/cienciaficcion/list"
+
+    def form_valid(self, form):
+        form.instance.comentario_id = self.kwargs['pk']
+        return super(Comentario, self).form_valid(form)
+    
+
+class ComentarioF(LoginRequiredMixin, CreateView):
+    model = ComentarioF
+    form_class = FormularioComentario
+    template_name = '/comentariof.html'
+    success_url = "/AppCoder/fantasia/list"
+
+    def form_valid(self, form):
+        form.instance.comentario_id = self.kwargs['pk']
+        return super(Comentario, self).form_valid(form)    

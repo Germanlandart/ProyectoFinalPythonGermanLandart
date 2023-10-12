@@ -19,7 +19,15 @@ class Comentario(models.Model):
     nombre = models.CharField(max_length=40)
     mensaje = models.TextField(null=True, blank=True)
     
-    
+class ComentarioCF(models.Model):
+    comentario = models.ForeignKey(Terror, related_name='comentarios', on_delete=models.CASCADE, null=True)
+    nombre = models.CharField(max_length=40)
+    mensaje = models.TextField(null=True, blank=True)    
+
+class ComentarioF(models.Model):
+    comentario = models.ForeignKey(Terror, related_name='comentarios', on_delete=models.CASCADE, null=True)
+    nombre = models.CharField(max_length=40)
+    mensaje = models.TextField(null=True, blank=True)    
         
 
 class CienciaFiccion(models.Model):

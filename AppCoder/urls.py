@@ -25,6 +25,8 @@ urlpatterns = [
     path("login/", InicioSesion, name="Login"),
     path("register/", registro, name="SignUp"),
     path("terror/book/<int:pk>/comentario", Comentario.as_view(template_name="AppCoder/comentario.html"), name='ComentarioTerror'),
+    path("fantasia/book/<int:pk>/comentario", ComentarioF.as_view(template_name="AppCoder/comentariof.html"), name='ComentarioFantasia'),
+    path("cienciaficcion/book/<int:pk>/comentario", ComentarioCF.as_view(template_name="AppCoder/comentariocf.html"), name='ComentarioCienciaFiccion'),
     path("logout/", LogoutView.as_view(template_name="AppCoder/logout.html"), name="Logout"),
     path("editar/", editarUsuario, name="EditarUsuario"),
     path("agregar/", agregarAvatar, name="Avatar"),

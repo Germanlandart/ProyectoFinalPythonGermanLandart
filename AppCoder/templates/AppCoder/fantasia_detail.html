@@ -4,7 +4,7 @@
 
 {% block titulo %}
                         
-Bienvenidos a mi página
+SECCIÓN DE FANTASÍA
 
 {% endblock %}
 
@@ -28,5 +28,24 @@ Libros de Fantasía
 <p>Portada: <img src="{{ fantasia.imagen.url }}"  height="200 px" alt="Descripción de la imagen"> </p>
 <p>Year: {{fantasia.year}}</p>
 <p>Descripción: {{fantasia.descripcion}}</p>
+
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not fantasia.comentarios.all %}
+        No han comentado este libro
+    {% else %}
+        {% for comentario in fantasia.comentarios.all %}
+        <p>Comentario de {{comentario.nombre}}</p>
+        <p>Mensaje: {{comentario.mensaje}}</p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'ComentarioFantasia' fantasia.id %}"> Agregar Comentarios  </a>
+    </div>
+</div>
+<br>
+
 <a href="{% url 'FantasiaLeer' %}"> Regresar </a>
 {% endblock  %}
