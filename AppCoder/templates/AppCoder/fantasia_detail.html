@@ -22,11 +22,11 @@ Libros de Fantasía
 {% endblock %}    
 
 {% block form %}
-
-    <p>Libro: {{fantasia.libro}}</p>
-    <p>Autor: {{fantasia.autor}}</p>
-    <p>Year: {{fantasia.year}}</p>
-
-    <a href="{% url 'FantasiaLeer' %}"> Regresar </a>
-    
+<p>Usuario: {{fantasia.usuario}}</p>
+<p>Libro: {{fantasia.libro}}</p>
+<p>Autor: {{fantasia.autor}}</p>
+<p>Portada: <img src="{{ fantasia.imagen.url }}"  height="200 px" alt="Descripción de la imagen"> </p>
+<p>Year: {{fantasia.year}}</p>
+<p>Descripción: {{fantasia.descripcion}}</p>
+<a href="{% url 'FantasiaLeer' %}"> Regresar </a>
 {% endblock  %}

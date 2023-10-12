@@ -103,28 +103,13 @@ def inicio(request):
 def about(request):  
     return render(request, "AppCoder/aboutme.html")
 
-@login_required
-def agregarImagen(request):
 
-    if request.method == "POST":
-        miFormulario= TerrorFormulario(request.POST, request.FILES)
 
-        if miFormulario.is_valid():
 
-            informacion = miFormulario.cleaned_data
-            
-            imagen = TerrorFormulario(usuario=informacion["usuario"], imagen=informacion["imagen"])
 
-            imagen.save()
 
-            return render(request, "AppCoder/inicio.html")
 
-    else:
 
-            miFormulario = TerrorFormulario()
-       
-       
-    return render(request, "AppCoder/agregarimg.html", {"form":miFormulario})
 
 
 @login_required
@@ -161,19 +146,19 @@ class CrearCienciaFiccion(LoginRequiredMixin, CreateView):
 
     model = CienciaFiccion
     success_url = "/AppCoder/cienciaficcion/list"   
-    fields = ["libro", "autor", "year"]
+    fields = ["usuario","libro", "autor", "year", "imagen", "descripcion"]
 
 class ActualizarCienciaFiccion(LoginRequiredMixin, UpdateView):
 
     model = CienciaFiccion
     success_url = "/AppCoder/cienciaficcion/list"   
-    fields = ["libro", "autor", "year"]
+    fields = ["usuario","libro", "autor", "year", "imagen", "descripcion"]
 
 class BorrarCienciaFiccion(LoginRequiredMixin, DeleteView):
 
     model = CienciaFiccion
     success_url = "/AppCoder/cienciaficcion/list"   
-    fields = ["libro", "autor", "year"]
+    fields = ["usuario","libro", "autor", "year", "imagen", "descripcion"]
 
 
 class ListaFantasia(LoginRequiredMixin, ListView):
@@ -188,19 +173,19 @@ class CrearFantasia(LoginRequiredMixin, CreateView):
 
     model = Fantasia
     success_url = "/AppCoder/fantasia/list"   
-    fields = ["libro", "autor", "year"]
+    fields = ["usuario","libro", "autor", "year", "imagen", "descripcion"]
 
 class ActualizarFantasia(LoginRequiredMixin, UpdateView):
 
     model = Fantasia
     success_url = "/AppCoder/fantasia/list"   
-    fields = ["libro", "autor", "year"]
+    fields = ["usuario","libro", "autor", "year", "imagen", "descripcion"]
 
 class BorrarFantasia(LoginRequiredMixin, DeleteView):
 
     model = Fantasia
     success_url = "/AppCoder/fantasia/list"   
-    fields = ["libro", "autor", "year"]
+    fields = ["usuario","libro", "autor", "year", "imagen", "descripcion"]
            
 
 class ListaTerror(LoginRequiredMixin, ListView):
@@ -220,10 +205,10 @@ class ActualizarTerror(LoginRequiredMixin, UpdateView):
 
     model = Terror
     success_url = "/AppCoder/terror/list"   
-    form_class = TerrorFormulario
+    fields = ["usuario","libro", "autor", "year", "imagen", "descripcion"]
 
 class BorrarTerror(LoginRequiredMixin, DeleteView):
 
     model = Terror
     success_url = "/AppCoder/terror/list"   
-    form_class = TerrorFormulario
+    fields = ["usuario","libro", "autor", "year", "imagen", "descripcion"]

@@ -24,7 +24,10 @@ class CienciaFiccion(models.Model):
 
     libro = models.CharField(max_length=60)
     autor = models.CharField(max_length=60)
-    year = models.IntegerField()
+    year = models.IntegerField(null=True, blank=True)
+    imagen = models.ImageField(null=True, blank=True, upload_to= "imagenes" )
+    descripcion = models.TextField(null=True, blank=True)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
        
 class Fantasia(models.Model):
@@ -35,7 +38,10 @@ class Fantasia(models.Model):
 
     libro = models.CharField(max_length=60)
     autor = models.CharField(max_length=60)
-    year = models.IntegerField()
+    year = models.IntegerField(null=True, blank=True)
+    imagen = models.ImageField(null=True, blank=True, upload_to= "imagenes" )
+    descripcion = models.TextField(null=True, blank=True)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
 
 class Avatar(models.Model):

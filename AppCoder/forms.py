@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from AppCoder.models import Avatar, Terror
+from AppCoder.models import Avatar, Terror, CienciaFiccion, Fantasia
 
 
 class TerrorFormulario(forms.ModelForm):
@@ -11,18 +11,18 @@ class TerrorFormulario(forms.ModelForm):
         
 
 
-class CienciaficcionFormulario(forms.Form):
+class CienciaficcionFormulario(forms.ModelForm):
 
-    libro = forms.CharField(max_length=60)
-    autor = forms.CharField(max_length=60)
-    year = forms.IntegerField()
+    class Meta:
+        model = CienciaFiccion
+        fields = ('libro', 'autor', 'year', 'imagen', 'descripcion', 'usuario')
 
-class FantasiaFormulario(forms.Form):
 
-    libro = forms.CharField(max_length=60)
-    autor = forms.CharField(max_length=60)
-    year = forms.IntegerField()
+class FantasiaFormulario(forms.ModelForm):
 
+    class Meta:
+        model = Fantasia
+        fields = ('libro', 'autor', 'year', 'imagen', 'descripcion', 'usuario')
 
 class UsuarioRegistro(UserCreationForm): 
 

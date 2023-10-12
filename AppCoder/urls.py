@@ -27,7 +27,7 @@ urlpatterns = [
     path("editar/", editarUsuario, name="EditarUsuario"),
     path("agregar/", agregarAvatar, name="Avatar"),
     path("aboutme/", about , name="About"),
-    path("agregarimagen/", views.agregarImagen, name="agregarImagen"),
+    
     
     
     ]
