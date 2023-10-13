@@ -230,7 +230,7 @@ class ComentarioCF(LoginRequiredMixin, CreateView):
     success_url = "/AppCoder/cienciaficcion/list"
 
     def form_valid(self, form):
-        form.instance.comentarioCF_id = self.kwargs['pk']
+        form.instance.comentario_id = self.kwargs['pk']
         return super(ComentarioCF, self).form_valid(form)
     
 
@@ -241,5 +241,5 @@ class ComentarioF(LoginRequiredMixin, CreateView):
     success_url = "/AppCoder/fantasia/list"
 
     def form_valid(self, form):
-        form.instance.comentariosf_id = self.kwargs['pk']
+        form.instance.comentariof_id = self.kwargs['pk']
         return super(ComentarioF, self).form_valid(form)    
