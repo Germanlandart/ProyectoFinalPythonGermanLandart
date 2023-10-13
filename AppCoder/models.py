@@ -58,7 +58,7 @@ class ComentarioCF(models.Model):
     mensaje = models.TextField(null=True, blank=True)    
 
 class ComentarioF(models.Model):
-    comentario = models.ForeignKey(Fantasia, related_name='comentariosf', on_delete=models.CASCADE, null=True)
+    comentario = models.ForeignKey(Fantasia, related_name='comentariof', on_delete=models.CASCADE, null=True)
     nombre = models.CharField(max_length=40)
     mensaje = models.TextField(null=True, blank=True)    
         

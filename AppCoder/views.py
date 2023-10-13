@@ -241,5 +241,5 @@ class ComentarioF(LoginRequiredMixin, CreateView):
     success_url = "/AppCoder/fantasia/list"
 
     def form_valid(self, form):
-        form.instance.comentariof_id = self.kwargs['pk']
+        form.instance.comentario_id = self.kwargs['pk']
         return super(ComentarioF, self).form_valid(form)    
